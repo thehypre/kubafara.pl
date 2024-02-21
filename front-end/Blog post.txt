@@ -1,0 +1,5 @@
+1
+Stworzyłem bucket S3 i wgrałem na niego placeholder index.html
+Zmieniłem ustawienia tak żeby strona była widoczna publicznie.
+Musiałem ręcznie wgrać nowy plik index.html żeby obsługiwał polskie znaki i znowu nadać mu uprawnienia.
+2
