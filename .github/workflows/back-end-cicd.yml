@@ -17,10 +17,10 @@ jobs:
         working-directory: infra
     steps:
         - name: Checkout Repository Code
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
 
         - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v1
+          uses: hashicorp/setup-terraform@v3
 
         - name: Terraform Init
           id: init
