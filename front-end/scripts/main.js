@@ -43,7 +43,7 @@ $('a.smooth-scroll')
 });
 
 // Get the view count
-    		fetch('https://anmhofnq77tvwwo5mxvnsdzrmu0xusah.lambda-url.eu-central-1.on.aws/')
+    		fetch('https://vprxwwk65hdp5n6ulrmj3tuqva0reeuz.lambda-url.eu-central-1.on.aws/')
       		.then(response => response.json())
       		.then((data) => {
         	document.getElementById('Count').innerText = data.Count
