@@ -13,7 +13,7 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-#dynamodb table
+#dynamodb table2
 # resource "aws_dynamodb_table" "kubafara-views-db" {
 #   name           = "kubafara-views-db"
 #   billing_mode   = "PROVISIONED"
