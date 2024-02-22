@@ -220,4 +220,4 @@ resource "aws_lambda_function_url" "url1" {
 }
 
 
-#add s3 and table from here, 
+#add s3 and table from here refactor code, clean up the mess
