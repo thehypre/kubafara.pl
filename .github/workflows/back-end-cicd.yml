@@ -1,9 +1,9 @@
-name: "Backend/Terraform Deployment for kubafara.pl"
+name: "Backend/Terraform Deployment"
 
 on:
   push:
-    branches:
-      - main
+    paths-ignore:
+      - 'front-end/**'
 
 jobs:
   terraform-plan-and-apply:

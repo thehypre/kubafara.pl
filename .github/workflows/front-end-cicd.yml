@@ -1,9 +1,9 @@
-name: Update website files to S3 bucket and invalidate Cloudfront
+name: Frontend S3 deployment & Cloudfront Invalidation
 
 on:
   push:
-    branches:
-    - main
+    paths-ignore:
+      - 'infra/**'
 
 jobs:
   copy-website-to-s3-and-invalidate-cloudfront:
