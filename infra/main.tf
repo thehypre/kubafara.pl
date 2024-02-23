@@ -13,52 +13,6 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-#dynamodb table2
-# resource "aws_dynamodb_table" "kubafara-views-db" {
-#   name           = "kubafara-views-db"
-#   billing_mode   = "PROVISIONED"
-#   read_capacity  = 20
-#   write_capacity = 20
-#   hash_key       = "id"
-
-#   attribute {
-#     name = "id"
-#     type = "S"
-#   }
-
-#   attribute {
-#     name = "view_count"
-#     type = "S"
-#   }
-
-#   global_secondary_index {
-#     name            = "view_count_index"
-#     hash_key        = "view_count"
-#     projection_type = "ALL"
-#     read_capacity   = 10
-#     write_capacity  = 10
-#   }
-
-#   tags = {
-#     Name = "kubafara-pl"
-#   }
-# }
-
-# resource "aws_dynamodb_table_item" "kubafara-views-db" {
-#   table_name = aws_dynamodb_table.kubafara-views-db.name
-#   hash_key   = aws_dynamodb_table.kubafara-views-db.hash_key
-
-#   item = <<ITEM
-# {
-#   "id": {"S": "1"},
-#   "view_count": {"S": "1"}
-# }
-# ITEM
-#   lifecycle {
-#     ignore_changes = all
-#   }
-# }
-
 #iam roles for the lambda func
 resource "aws_iam_role" "lambda_role" {
   name = "terraform_lambda_func_Role"
@@ -136,75 +90,6 @@ resource "aws_lambda_function" "terraform_lambda_func" {
   }
 }
 
-#cw+api
-
-# resource "aws_cloudwatch_log_group" "api_gw" {
-#   name              = "visitor_count_log_group"
-#   retention_in_days = 30
-# }
-
-# resource "aws_apigatewayv2_api" "lambda" {
-#   name          = "visitor_count_CRC"
-#   protocol_type = "HTTP"
-#   description   = "Visitor count for kubafara-pl"
-#   cors_configuration {
-#     allow_origins = ["https://kubafara.pl", "https://www.kubafara.pl"]
-#   }
-# }
-
-# #api gw stage and deploy
-# resource "aws_apigatewayv2_stage" "lambda" {
-#   api_id = aws_apigatewayv2_api.lambda.id
-
-#   name        = "default"
-#   auto_deploy = true
-
-#   access_log_settings {
-#     destination_arn = aws_cloudwatch_log_group.api_gw.arn
-
-#     format = jsonencode({
-#       requestId               = "$context.requestId"
-#       sourceIp                = "$context.identity.sourceIp"
-#       requestTime             = "$context.requestTime"
-#       protocol                = "$context.protocol"
-#       httpMethod              = "$context.httpMethod"
-#       resourcePath            = "$context.resourcePath"
-#       routeKey                = "$context.routeKey"
-#       status                  = "$context.status"
-#       responseLength          = "$context.responseLength"
-#       integrationErrorMessage = "$context.integrationErrorMessage"
-#     })
-#   }
-
-#   tags = {
-#     Name = "kubafara-pl"
-#   }
-# }
-
-# #api gw integration with lambda func
-# resource "aws_apigatewayv2_integration" "terraform_lambda_func" {
-#   api_id             = aws_apigatewayv2_api.lambda.id
-#   integration_uri    = aws_lambda_function.terraform_lambda_func.invoke_arn
-#   integration_type   = "AWS_PROXY"
-#   integration_method = "POST"
-# }
-
-# #api gw route
-# resource "aws_apigatewayv2_route" "terraform_lambda_func" {
-#   api_id    = aws_apigatewayv2_api.lambda.id
-#   route_key = "ANY /terraform_lambda_func"
-#   target    = "integrations/${aws_apigatewayv2_integration.terraform_lambda_func.id}"
-# }
-
-# #lambda permission to API gw
-# resource "aws_lambda_permission" "api_gw" {
-#   statement_id  = "AllowExecutionFromAPIGateway"
-#   action        = "lambda:InvokeFunction"
-#   function_name = aws_lambda_function.terraform_lambda_func.function_name
-#   principal     = "apigateway.amazonaws.com"
-#   source_arn    = "${aws_apigatewayv2_api.lambda.execution_arn}/*/*"
-# }
-
 resource "aws_lambda_function_url" "url1" {
   function_name      = aws_lambda_function.terraform_lambda_func.function_name
   authorization_type = "NONE"
@@ -219,5 +104,9 @@ resource "aws_lambda_function_url" "url1" {
   }
 }
 
+# Possible additions to terraform: create dynamoDB table with initial record
+# create s3 bucket for website
+# use another s3 bucket to store terraform state more securely
+# out of scope: cloudfront distribution/certificate since using home.pl it has to be configured manually at home.pl side (CNAME records)
 
-#add s3 and table from here refactor code, clean up the mess
+
