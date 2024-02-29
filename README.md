@@ -9,7 +9,7 @@ The story behind the site is avialible at [_here_](https://www.kubafara.pl/blogp
 ## Room for Improvement
 
 Room for improvement:
-- Use API Gateway instead of Function URL
+- Use API Gateway instead of Function URL for the Lambda Function.
 - Write some tests for back and front end and include them in CI/CD pipeline.
 
 To do:
