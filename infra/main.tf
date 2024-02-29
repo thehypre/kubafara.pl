@@ -104,9 +104,11 @@ resource "aws_lambda_function_url" "url1" {
   }
 }
 
-# Possible additions to terraform: create dynamoDB table with initial record
-# create s3 bucket for website
-# use another s3 bucket to store terraform state more securely
-# out of scope: cloudfront distribution/certificate since using home.pl it has to be configured manually at home.pl side (CNAME records)
+# TODO:
+# using terraform: create dynamoDB table with initial record,
+# create s3 bucket for website,
+# use another s3 bucket to store terraform state more securely,
+# less important: cloudfront distribution/ ssl certificate (has to be configured manually at home.pl side (CNAME records)?),
+# add simple tests for lambda function, and frontend, update ci/cd pipeline to include them.
 
 
