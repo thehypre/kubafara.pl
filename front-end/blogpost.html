@@ -57,8 +57,17 @@
     <div class="card" data-aos="fade-up" data-aos-offset="10">
           <div class="card-body">
             <div class="h4 mt-0 title">About</div>
-            <p>Tutaj będzie treść wpisu jak zrobiłem tę stronę z opisem ulepszeń</p>
-            <p>Tutaj coś będzie kiedyś dalej bla bla bla <a href="https://templateflip.com/templates/creative-cv/" target="_blank">Learn More</a></p>
+            <p>This website was created by me to apply in practice skills learned while getting AWS Cloud Practicioner certification. The goal was to create a CV webpage with a simple functionality of a view counter implemented in a not so simple AWS enviroment.</p>
+
+            <p>The first step was setting up a static page using S3 bucket and a Cloudfront distribution. The page redirects all HTTP traffic to HTTPS.&nbsp; Using external domain provider i purchased a .pl domain and set it up with cloudfront using CNAME records added at home.pl admin panel. The website is based on a modyfied custom template from templatefilp.com</p>
+            
+            <p>In the second step I manually implemented a simple JavaScript function on the frontend side and a Python Lambda Function on the backend to get a value from a dynamoDB database via Function URL and increment it by one.</p>
+            
+            <p>The final step was to set-up most of the things again this time using IaaC with a CI/CD pipeline. I choose the terraforme since it is not only an Amazon service, but is as well used by other cloud providers. The CI/CD pipeline made in GitHub Actions provides a sufficient level of automation - for the fronted it updates the webpage contents in the S3 bucket and invalidates the cloudfront so any changes are too be seen by an user in a matter of seconds. The backend part handles and applies the terraform changes to the infractucture while ensuring the quality of the code.</p>
+            
+            <p>Creation of the website was inspired by <a href="https://cloudresumechallenge.dev/docs/the-challenge/aws/">Cloud Resume Challenge</a>. Working on this simple project show me how much is it yet to learn in the cloud. Even a simple view counter can be challenging for a person new to the AWS Services, however this only made me more eager to learn more, even in this projects i could still try to do things differently: try to build cloudfront in the terraform even with an external provider, create a new bucket to store terraform state more securly, try to use API Gateway instead of Function URL, include tests for the backend and frontend etc. Although for the next challenge i would like to build a proper web app and include those and different topics like advanced networking and security in the cloud.</p>
+            
+            <p><a href="https://github.com/thehypre/kubafara.pl" GitHub repo for the site ></a></p>
           </div>
         </div>
         </div>
