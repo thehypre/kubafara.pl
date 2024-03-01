@@ -4,7 +4,7 @@
 
 
 ## General Information
-The story behind the site is avialible at [_here_](https://www.kubafara.pl/blogpost.html)
+The story behind the site is available at [_here_](https://www.kubafara.pl/blogpost.html)
 
 ## Room for Improvement
 
