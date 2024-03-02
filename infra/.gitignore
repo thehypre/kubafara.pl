@@ -1,6 +1,4 @@
 **/.terraform/*
-# *.tfstate
-# *.tfstate.*
 crash.log
 crash.*.log
 *.tfvars
@@ -11,3 +9,6 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
+#uncomment those after setting up a remote tfstate:
+# *.tfstate
+# *.tfstate.*
